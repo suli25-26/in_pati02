@@ -1,0 +1,3 @@
+username:password:role
+dani:titok:admin
+iren:titok:admin
