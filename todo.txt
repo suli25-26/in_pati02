@@ -1,0 +1,10 @@
+TODO: módosítás
+TODO: törlés
+TODO: jelszómegfelelés
+TODO: jelszógenerálás
+TODO: refaktorálás: isValidUserField()
+    minden ilyen field egy tömbbe, és
+    a validáló végig megy rajta.
+TODO: mentés
+TODO: beléptetés
+TODO: REST API használata
