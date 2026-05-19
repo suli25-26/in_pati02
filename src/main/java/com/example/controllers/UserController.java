@@ -148,7 +148,7 @@ public class UserController {
 
     @FXML
     void onClickSaveButton(ActionEvent event) {
-
+        Storage.writeContent(userTable.getItems());
     }
 
     @FXML

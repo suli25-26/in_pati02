@@ -2,6 +2,8 @@ package com.example.models;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -32,5 +34,31 @@ public class Storage {
             }
         }
         return userList;
+    }
+
+    public static void writeContent(List<User> userList) {
+        try {
+            tryWriteContent(userList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private static void tryWriteContent(List<User> userList) throws IOException {
+        FileWriter fileWriter = new FileWriter("users.txt");
+
+        String header = "username:password:role";
+        fileWriter.write(header + "\n");
+
+        for(User user: userList) {
+            String line = 
+            user.getUser() + ":" +
+            user.getPass() + ":" +
+            user.getRole() + "\n";
+            fileWriter.write(line);
+        }
+        
+
+        fileWriter.close();
+
     }
 }
