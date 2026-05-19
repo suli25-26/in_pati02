@@ -13,6 +13,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 public class UserController {
 
@@ -131,12 +132,33 @@ public class UserController {
 
     @FXML
     void onClickModifyButton(ActionEvent event) {
+        System.out.println("Módosít...");
+        int index = userTable.getSelectionModel().getFocusedIndex();
+        System.out.println(index);
+        User user = new User();
+        user.setUser(userField.getText());
+        user.setPass(passField.getText());
+        user.setRole(roleField.getText());
 
+        userTable.getItems().set(index, user);
+        userTable.setDisable(false);
+        clearFields();
     }
 
     @FXML
     void onClickSaveButton(ActionEvent event) {
 
     }
+
+    @FXML
+    void onMouseClicked(MouseEvent event) {
+        if(event.getClickCount() == 2) {
+            User user = userTable.getSelectionModel().getSelectedItem();
+            userField.setText(user.getUser());
+            passField.setText(user.getPass());
+            roleField.setText(user.getRole());
+            userTable.setDisable(true);
+        }
+    }    
 
 }
