@@ -127,7 +127,8 @@ public class UserController {
 
     @FXML
     void onClickDelButton(ActionEvent event) {
-
+        int index = userTable.getSelectionModel().getSelectedIndex();
+        userTable.getItems().remove(index);
     }
 
     @FXML
