@@ -14,7 +14,7 @@
          <font>
             <Font size="30.0" />
          </font></Label>
-      <TableView fx:id="userTable" layoutX="24.0" layoutY="77.0" onMouseClicked="#onMouseClicked" prefHeight="225.0" prefWidth="488.0">
+      <TableView fx:id="userTable" layoutX="24.0" layoutY="77.0" onMouseClicked="#onMouseClicked" prefHeight="225.0" prefWidth="464.0">
         <columns>
           <TableColumn fx:id="userCol" prefWidth="102.0" text="Felhasználónév" />
           <TableColumn fx:id="passCol" prefWidth="289.0" text="Jelszó" />
@@ -32,5 +32,6 @@
       <Button layoutX="317.0" layoutY="364.0" mnemonicParsing="false" onAction="#onClickDelButton" prefHeight="25.0" prefWidth="100.0" text="Törlés" />
       <Button layoutX="523.0" layoutY="188.0" mnemonicParsing="false" onAction="#onClickSaveButton" text="Mentés" />
       <Button layoutX="525.0" layoutY="145.0" mnemonicParsing="false" onAction="#onClickBackButton" text="Vissza" />
+      <Button layoutX="494.0" layoutY="252.0" mnemonicParsing="false" onAction="#onClickPassGenerateButton" text="Jelszó generálás" />
    </children>
 </Pane>

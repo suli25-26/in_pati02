@@ -3,6 +3,7 @@ package com.example.controllers;
 import java.util.List;
 
 import com.example.App;
+import com.example.models.Password;
 import com.example.models.Storage;
 import com.example.models.User;
 
@@ -55,7 +56,9 @@ public class UserController {
     }
 
     void startAdd() {
-        startValidate();
+        if(!startValidate()) {
+            return;
+        }
         User user = new User();
         user.setUser(userField.getText());
         user.setPass(passField.getText());
@@ -72,7 +75,7 @@ public class UserController {
             valid = false;
         }
         if (!isValidPassField()) {
-            showError("A jelszó kötelező!");
+            showError("Érvénytelen jelszó!");
             valid = false;
         }
         if (!isValidRoleField()) {
@@ -101,6 +104,9 @@ public class UserController {
     boolean isValidPassField() {
         boolean valid = true;
         if (passField.getText().isEmpty()) {
+            valid = false;
+        }
+        if(!Password.isValid(passField.getText())) {
             valid = false;
         }
         return valid;
@@ -133,6 +139,13 @@ public class UserController {
 
     @FXML
     void onClickModifyButton(ActionEvent event) {
+        startModify();
+    }
+
+    void startModify() {
+        if(!startValidate()) {
+            return;
+        }        
         System.out.println("Módosít...");
         int index = userTable.getSelectionModel().getFocusedIndex();
         System.out.println(index);
@@ -160,6 +173,17 @@ public class UserController {
             roleField.setText(user.getRole());
             userTable.setDisable(true);
         }
-    }    
+    }
+    
+    @FXML
+    void onClickPassGenerateButton(ActionEvent event) {
+        startPasswordGenerating();
+    }
+
+    void startPasswordGenerating() {
+        boolean[] setup = {true, true, true, true};
+        String newPass = Password.generate(setup, 6);
+        passField.setText(newPass);
+    }
 
 }
